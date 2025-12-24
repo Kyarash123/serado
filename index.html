@@ -1,0 +1,349 @@
+<!doctype doctype>
+<html lang="fa" dir="rtl" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منوی کافه سرادو</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        .category-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .category-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #d4af37 0%, #f4e5c3 100%);
+            color: #1a1a2e;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .menu-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+            border-color: #d4af37;
+        }
+
+        .price-tag {
+            background: linear-gradient(135deg, #d4af37 0%, #f4e5c3 100%);
+            color: #1a1a2e;
+            font-weight: 700;
+        }
+
+        .description-text {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .gold-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-shadow {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 768px) {
+            .category-scroll {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            
+            .category-scroll::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div class="w-full h-full overflow-auto scroll-smooth gradient-bg"><!-- Header -->
+   <header class="sticky top-0 z-50 header-shadow" style="background: rgba(26, 26, 46, 0.95); backdrop-filter: blur(10px);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+     <div class="text-center">
+      <h1 id="cafe-name" class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2" style="background: linear-gradient(135deg, #d4af37 0%, #f4e5c3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">کافه سرادو</h1>
+      <p id="cafe-tagline" class="text-sm sm:text-base" style="color: #f4e5c3;">تجربه‌ای لوکس از طعم و آرامش</p>
+     </div>
+    </div>
+   </header><!-- Categories Navigation -->
+   <nav class="sticky top-24 sm:top-28 z-40 py-4 px-4" style="background: rgba(22, 33, 62, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+    <div class="max-w-7xl mx-auto">
+     <div class="category-scroll flex gap-3 justify-start sm:justify-center flex-nowrap sm:flex-wrap"><button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap" style="background: linear-gradient(135deg, #d4af37 0%, #f4e5c3 100%); color: #1a1a2e;"> همه موارد </button> <button onclick="filterCategory('hookah')" class="category-btn px-6 py-3 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> قلیان </button> <button onclick="filterCategory('pizza')" class="category-btn px-6 py-3 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> پیتزا </button> <button onclick="filterCategory('services')" class="category-btn px-6 py-3 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> خدمات </button> <button onclick="filterCategory('snacks')" class="category-btn px-6 py-3 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> تنقلات </button>
+     </div>
+    </div>
+   </nav><!-- Menu Items Container -->
+   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-16">
+    <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Menu items will be inserted here -->
+    </div>
+   </main>
+  </div>
+  <script>
+        const defaultConfig = {
+            cafe_name: "کافه سرادو",
+            cafe_tagline: "تجربه‌ای لوکس از طعم و آرامش",
+            background_color: "#1a1a2e",
+            card_color: "#ffffff",
+            accent_color: "#d4af37",
+            text_color: "#1a1a2e",
+            button_color: "#d4af37"
+        };
+
+        const menuData = [
+            // قلیان
+            { category: 'hookah', name: 'قلیان میوه‌ای معمولی', price: '250,000', description: 'دوسیب، آدامس دارچین، انگور نعنا، بلوبری، هندوانه یخ، پرتقال خامه، سیب یخ، طالبی یخ، تمشک بستنی، شاتوت بستنی' },
+            { category: 'hookah', name: 'قلیان میوه‌ای اسپشیال', price: '350,000', description: 'شبهای مسکو، لاو، شبهای بغداد، شیخ مانی، لیدی کیلر، دژاوو، اسکای‌فال، گادفادر، شهریار، جزیره عشق، آمازون' },
+            { category: 'hookah', name: 'قلیان ویژه سرادو', price: '450,000', description: 'قلیان سنگ بخار با طعم‌های شب‌های مسکو، لاو، آدامس دارچین، آدامس بادکنکی، تمشک بستنی - قلیان با پایه شیر شامل شیر انبه، شیر قهوه، شیرطالبی' },
+            { category: 'hookah', name: 'تعویض سری قلیان', price: '175,000', description: '' },
+            { category: 'hookah', name: 'سرویس قلیان', price: '350,000', description: 'آلبالو خشک، پاستیل، برگه زردالو،‌ تخمه آفتابگردان، بادام زمینی، شکلات، لواشک، انجیر خشک، ترشک، آلو برقانی (هفت آیتم بصورت رندوم)' },
+            { category: 'hookah', name: 'پک یلدا', price: '450,000', description: '' },
+            
+            // خدمات
+            { category: 'services', name: 'ورودی موسیقی زنده', price: '150,000', description: '' },
+            { category: 'services', name: 'ورودی فوتبال', price: '100,000', description: '' },
+            { category: 'services', name: 'ورودی تولد', price: '300,000', description: '' },
+            
+            // تنقلات
+            { category: 'snacks', name: 'تنقلات', price: '75,000', description: 'شامل یکی از آیتم‌های ترشک، چیپس، ماست موسیر، پفیلا، تخمه آفتابگردان' },
+            { category: 'snacks', name: 'پک میوه', price: '150,000', description: 'چهار قلم میوه فصل' },
+            { category: 'snacks', name: 'تخمه آفتابگردان', price: '75,000', description: '100 گرم' },
+            
+            // پیتزا
+            { category: 'pizza', name: 'پیتزا ویژه سرادو یک‌نفره (26 سانت)', price: '405,000', description: 'استیک، فیله مرغ نگینی، قارچ، پنیر، فلفل دلمه‌ای، زیتون' },
+            { category: 'pizza', name: 'پیتزا ویژه سرادو دونفره (30 سانت)', price: '505,000', description: 'استیک، فیله مرغ نگینی، قارچ، پنیر، فلفل دلمه‌ای، زیتون' },
+            { category: 'pizza', name: 'پیتزا دونر یک‌نفره (26 سانت)', price: '425,000', description: 'گوشت دونر کبابی، قارچ، پنیر، فلفل دلمه‌ای' },
+            { category: 'pizza', name: 'پیتزا دونر دونفره (30 سانت)', price: '510,000', description: 'گوشت دونر کبابی، قارچ، پنیر، فلفل دلمه‌ای' },
+            { category: 'pizza', name: 'پیتزا قارچ و پنیر یک‌نفره (26 سانت)', price: '199,000', description: '' },
+            { category: 'pizza', name: 'پیتزا قارچ و پنیر دونفره (30 سانت)', price: '299,000', description: '' },
+            { category: 'pizza', name: 'پیتزا سبزیجات یک‌نفره (26 سانت)', price: '220,000', description: '' },
+            { category: 'pizza', name: 'پیتزا سبزیجات دونفره (30 سانت)', price: '310,000', description: '' },
+            { category: 'pizza', name: 'پیتزا ژامبون یک‌نفره (26 سانت)', price: '300,000', description: '' },
+            { category: 'pizza', name: 'پیتزا ژامبون دونفره (30 سانت)', price: '400,000', description: '' },
+            { category: 'pizza', name: 'پیتزا سه سوسیس یک‌نفره (26 سانت)', price: '320,000', description: '' },
+            { category: 'pizza', name: 'پیتزا سه سوسیس دونفره (30 سانت)', price: '400,000', description: '' },
+            { category: 'pizza', name: 'پیتزا سیر و استیک یک‌نفره (26 سانت)', price: '420,000', description: '' },
+            { category: 'pizza', name: 'پیتزا سیر و استیک دونفره (30 سانت)', price: '510,000', description: 'خمیر پیتزا ایتالیایی، گوشت فیله گوساله مرینت شده استیکی، قارچ، پنیر پیتزا، فلفل دلمه‌ای' },
+            { category: 'pizza', name: 'پیتزا مخصوص یک‌نفره (26 سانت)', price: '400,000', description: 'ژامبون، سالامی، استیک' },
+            { category: 'pizza', name: 'پیتزا مخصوص دونفره (30 سانت)', price: '510,000', description: 'ژامبون، سالامی، استیک' },
+            { category: 'pizza', name: 'پیتزا رست بیف یک‌نفره (26 سانت)', price: '450,000', description: 'گوشت گوساله، سس مخصوص قارچ' },
+            { category: 'pizza', name: 'پیتزا رست بیف دونفره (30 سانت)', price: '555,000', description: 'گوشت گوساله، سس مخصوص قارچ' },
+            { category: 'pizza', name: 'پیتزا پپرونی یک‌نفره (26 سانت)', price: '300,000', description: '' },
+            { category: 'pizza', name: 'پیتزا پپرونی دونفره (30 سانت)', price: '400,000', description: 'خمیر پیتزا دست ساز ایتالیایی، پپرونی 90% گوشت، پنیر موزارلا، فلفل دلمه‌ای، زیتون، قارچ' },
+            { category: 'pizza', name: 'پیتزا مخلوط یک‌نفره (26 سانت)', price: '360,000', description: '' },
+            { category: 'pizza', name: 'پیتزا مخلوط دونفره (30 سانت)', price: '460,000', description: 'خمیر پیتزا دست ساز ایتالیایی، ژامبون مخلوط مرغ و گوشت 90%، سوسیس هلندی، پنیر موزارلا، فلفل دلمه‌ای، زیتون، قارچ' },
+            { category: 'pizza', name: 'پیتزا مرغ و قارچ یک‌نفره (26 سانت)', price: '373,000', description: '' },
+            { category: 'pizza', name: 'پیتزا مرغ و قارچ دونفره (30 سانت)', price: '488,000', description: 'خمیر پیتزا ایتالیایی، مرغ، قارچ، پنیر پیتزا، فلفل دلمه‌ای، زیتون' },
+            { category: 'pizza', name: 'پیتزا قارچ و گوشت یک‌نفره (26 سانت)', price: '400,000', description: '' },
+            { category: 'pizza', name: 'پیتزا قارچ و گوشت دونفره (30 سانت)', price: '505,000', description: '' }
+        ];
+
+        let currentCategory = 'all';
+
+        function renderMenuItems() {
+            const container = document.getElementById('menu-container');
+            const filteredData = currentCategory === 'all' 
+                ? menuData 
+                : menuData.filter(item => item.category === currentCategory);
+
+            container.innerHTML = filteredData.map(item => `
+                <div class="menu-card rounded-2xl p-6 fade-in">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-lg sm:text-xl font-bold mb-3" style="color: ${window.elementSdk?.config?.text_color || defaultConfig.text_color};">
+                            ${item.name}
+                        </h3>
+                        ${item.description ? `
+                            <p class="description-text text-sm mb-4 flex-grow">
+                                ${item.description}
+                            </p>
+                        ` : '<div class="flex-grow"></div>'}
+                        <div class="gold-divider mb-4"></div>
+                        <div class="flex items-center justify-between">
+                            <span class="price-tag px-4 py-2 rounded-full text-base sm:text-lg font-bold">
+                                ${item.price} تومان
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            // Update button states
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.background = 'rgba(255, 255, 255, 0.1)';
+                btn.style.color = '#f4e5c3';
+                btn.style.border = '2px solid rgba(212, 175, 55, 0.3)';
+                btn.style.boxShadow = 'none';
+            });
+            
+            event.target.classList.add('active');
+            event.target.style.background = `linear-gradient(135deg, ${window.elementSdk?.config?.button_color || defaultConfig.button_color} 0%, #f4e5c3 100%)`;
+            event.target.style.color = window.elementSdk?.config?.background_color || defaultConfig.background_color;
+            event.target.style.border = 'none';
+            event.target.style.boxShadow = `0 8px 20px rgba(212, 175, 55, 0.4)`;
+            
+            renderMenuItems();
+        }
+
+        async function onConfigChange(config) {
+            const cafeName = document.getElementById('cafe-name');
+            const cafeTagline = document.getElementById('cafe-tagline');
+            
+            if (cafeName) {
+                cafeName.textContent = config.cafe_name || defaultConfig.cafe_name;
+            }
+            
+            if (cafeTagline) {
+                cafeTagline.textContent = config.cafe_tagline || defaultConfig.cafe_tagline;
+            }
+
+            const bgColor = config.background_color || defaultConfig.background_color;
+            const accentColor = config.accent_color || defaultConfig.accent_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const buttonColor = config.button_color || defaultConfig.button_color;
+            
+            document.querySelector('.w-full').style.background = `linear-gradient(135deg, ${bgColor} 0%, #16213e 50%, #0f3460 100%)`;
+            
+            const activeBtn = document.querySelector('.category-btn.active');
+            if (activeBtn) {
+                activeBtn.style.background = `linear-gradient(135deg, ${buttonColor} 0%, #f4e5c3 100%)`;
+                activeBtn.style.color = bgColor;
+            }
+            
+            const priceTags = document.querySelectorAll('.price-tag');
+            priceTags.forEach(tag => {
+                tag.style.background = `linear-gradient(135deg, ${accentColor} 0%, #f4e5c3 100%)`;
+                tag.style.color = bgColor;
+            });
+            
+            const menuTitles = document.querySelectorAll('.menu-card h3');
+            menuTitles.forEach(title => {
+                title.style.color = textColor;
+            });
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.card_color || defaultConfig.card_color,
+                            set: (value) => {
+                                config.card_color = value;
+                                window.elementSdk.setConfig({ card_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.accent_color || defaultConfig.accent_color,
+                            set: (value) => {
+                                config.accent_color = value;
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.button_color || defaultConfig.button_color,
+                            set: (value) => {
+                                config.button_color = value;
+                                window.elementSdk.setConfig({ button_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: undefined,
+                    fontSizeable: undefined
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ['cafe_name', config.cafe_name || defaultConfig.cafe_name],
+                    ['cafe_tagline', config.cafe_tagline || defaultConfig.cafe_tagline]
+                ])
+            });
+        }
+
+        // Initial render
+        renderMenuItems();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b2f47e8d1f9d2eb',t:'MTc2NjU3MDczMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
