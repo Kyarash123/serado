@@ -130,9 +130,9 @@
      </div>
     </div>
    </header><!-- Categories Navigation -->
-   <nav class="sticky top-24 sm:top-28 z-40 py-4 px-4" style="background: rgba(22, 33, 62, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
-    <div class="max-w-7xl mx-auto">
-     <div class="category-scroll flex gap-3 justify-start sm:justify-center flex-nowrap sm:flex-wrap"><button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap" style="background: linear-gradient(135deg, #d4af37 0%, #f4e5c3 100%); color: #1a1a2e;"> همه موارد </button> <button onclick="filterCategory('hookah')" class="category-btn px-6 py-3 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> قلیان </button> <button onclick="filterCategory('pizza')" class="category-btn px-6 py-3 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> پیتزا </button> <button onclick="filterCategory('services')" class="category-btn px-6 py-3 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> خدمات </button> <button onclick="filterCategory('snacks')" class="category-btn px-6 py-3 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> تنقلات </button>
+   <nav class="sticky top-24 sm:top-28 z-40 py-4" style="background: rgba(22, 33, 62, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="category-scroll flex gap-2 sm:gap-3 justify-start sm:justify-center flex-nowrap sm:flex-wrap pb-1"><button onclick="filterCategory('all')" class="category-btn active px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-base font-semibold whitespace-nowrap flex-shrink-0" style="background: linear-gradient(135deg, #d4af37 0%, #f4e5c3 100%); color: #1a1a2e;"> همه موارد </button> <button onclick="filterCategory('hookah')" class="category-btn px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-base font-semibold whitespace-nowrap flex-shrink-0" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> قلیان </button> <button onclick="filterCategory('pizza')" class="category-btn px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-base font-semibold whitespace-nowrap flex-shrink-0" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> پیتزا </button> <button onclick="filterCategory('services')" class="category-btn px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-base font-semibold whitespace-nowrap flex-shrink-0" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> خدمات </button> <button onclick="filterCategory('snacks')" class="category-btn px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-base font-semibold whitespace-nowrap flex-shrink-0" style="background: rgba(255, 255, 255, 0.1); color: #f4e5c3; border: 2px solid rgba(212, 175, 55, 0.3);"> تنقلات </button>
      </div>
     </div>
    </nav><!-- Menu Items Container -->
@@ -154,7 +154,7 @@
 
         const menuData = [
             // قلیان
-            { category: 'hookah', name: 'قلیان میوه‌ای معمولی', price: '250,000', description: 'دوسیب، آدامس دارچین، انگور نعنا، بلوبری، هندوانه یخ، پرتقال خامه، سیب یخ، طالبی یخ، تمشک بستنی، شاتوت بستنی' },
+            { category: 'hookah', name: 'قلیان میوه‌ای معمولی', price: '250,000', description: 'دوسیب، ��دامس دارچین، انگور نعنا، بلوبری، هندوانه یخ، پرتقال خامه، سیب یخ، طالبی یخ، تمشک بستنی، شاتوت بستنی' },
             { category: 'hookah', name: 'قلیان میوه‌ای اسپشیال', price: '350,000', description: 'شبهای مسکو، لاو، شبهای بغداد، شیخ مانی، لیدی کیلر، دژاوو، اسکای‌فال، گادفادر، شهریار، جزیره عشق، آمازون' },
             { category: 'hookah', name: 'قلیان ویژه سرادو', price: '450,000', description: 'قلیان سنگ بخار با طعم‌های شب‌های مسکو، لاو، آدامس دارچین، آدامس بادکنکی، تمشک بستنی - قلیان با پایه شیر شامل شیر انبه، شیر قهوه، شیرطالبی' },
             { category: 'hookah', name: 'تعویض سری قلیان', price: '175,000', description: '' },
@@ -162,7 +162,7 @@
             { category: 'hookah', name: 'پک یلدا', price: '450,000', description: '' },
             
             // خدمات
-            { category: 'services', name: 'ورودی موسیقی زنده', price: '150,000', description: '' },
+            { category: 'services', name: 'ورودی موسیقی زند��', price: '150,000', description: '' },
             { category: 'services', name: 'ورودی فوتبال', price: '100,000', description: '' },
             { category: 'services', name: 'ورودی تولد', price: '300,000', description: '' },
             
@@ -172,13 +172,13 @@
             { category: 'snacks', name: 'تخمه آفتابگردان', price: '75,000', description: '100 گرم' },
             
             // پیتزا
-            { category: 'pizza', name: 'پیتزا ویژه سرادو یک‌نفره (26 سانت)', price: '405,000', description: 'استیک، فیله مرغ نگینی، قارچ، پنیر، فلفل دلمه‌ای، زیتون' },
+            { category: 'pizza', name: 'پیتزا ویژه سرادو یک‌نفره (26 سانت)', price: '405,000', description: 'استیک، فیله مرغ نگینی، قارچ، پنیر، ف��فل دلمه‌ای�� زیتون' },
             { category: 'pizza', name: 'پیتزا ویژه سرادو دونفره (30 سانت)', price: '505,000', description: 'استیک، فیله مرغ نگینی، قارچ، پنیر، فلفل دلمه‌ای، زیتون' },
             { category: 'pizza', name: 'پیتزا دونر یک‌نفره (26 سانت)', price: '425,000', description: 'گوشت دونر کبابی، قارچ، پنیر، فلفل دلمه‌ای' },
             { category: 'pizza', name: 'پیتزا دونر دونفره (30 سانت)', price: '510,000', description: 'گوشت دونر کبابی، قارچ، پنیر، فلفل دلمه‌ای' },
             { category: 'pizza', name: 'پیتزا قارچ و پنیر یک‌نفره (26 سانت)', price: '199,000', description: '' },
             { category: 'pizza', name: 'پیتزا قارچ و پنیر دونفره (30 سانت)', price: '299,000', description: '' },
-            { category: 'pizza', name: 'پیتزا سبزیجات یک‌نفره (26 سانت)', price: '220,000', description: '' },
+            { category: 'pizza', name: 'پیتز�� سبزیجات یک‌نفره (26 سانت)', price: '220,000', description: '' },
             { category: 'pizza', name: 'پیتزا سبزیجات دونفره (30 سانت)', price: '310,000', description: '' },
             { category: 'pizza', name: 'پیتزا ژامبون یک‌نفره (26 سانت)', price: '300,000', description: '' },
             { category: 'pizza', name: 'پیتزا ژامبون دونفره (30 سانت)', price: '400,000', description: '' },
@@ -195,7 +195,7 @@
             { category: 'pizza', name: 'پیتزا مخلوط یک‌نفره (26 سانت)', price: '360,000', description: '' },
             { category: 'pizza', name: 'پیتزا مخلوط دونفره (30 سانت)', price: '460,000', description: 'خمیر پیتزا دست ساز ایتالیایی، ژامبون مخلوط مرغ و گوشت 90%، سوسیس هلندی، پنیر موزارلا، فلفل دلمه‌ای، زیتون، قارچ' },
             { category: 'pizza', name: 'پیتزا مرغ و قارچ یک‌نفره (26 سانت)', price: '373,000', description: '' },
-            { category: 'pizza', name: 'پیتزا مرغ و قارچ دونفره (30 سانت)', price: '488,000', description: 'خمیر پیتزا ایتالیایی، مرغ، قارچ، پنیر پیتزا، فلفل دلمه‌ای، زیتون' },
+            { category: 'pizza', name: 'پیتزا مر�� و قارچ دونفره (30 سانت)', price: '488,000', description: 'خمیر پیتزا ایتالیایی، مرغ، قارچ، پنیر پیتزا، فلفل دلمه‌ای، زیتون' },
             { category: 'pizza', name: 'پیتزا قارچ و گوشت یک‌نفره (26 سانت)', price: '400,000', description: '' },
             { category: 'pizza', name: 'پیتزا قارچ و گوشت دونفره (30 سانت)', price: '505,000', description: '' }
         ];
@@ -345,5 +345,5 @@
         // Initial render
         renderMenuItems();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b2f47e8d1f9d2eb',t:'MTc2NjU3MDczMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b2f618427579250',t:'MTc2NjU3MTc4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
